@@ -1,0 +1,51 @@
+{% extends 'layouts/app.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'check_trackers' %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% trans 'email' %}</th>
+                        <th scope="col">{% trans 'track_id' %}</th>
+                        <th scope="col">{% trans 'send_time' %}</th>
+                        <th scope="col">{% trans 'opened' %}</th>
+                        <th scope="col">{% trans 'opened_at' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for newsletter_open in newsletters_open %}
+                    <tr>
+                        <th scope="row">
+                            {{ newsletter_open.id }}
+                        </th>
+                        <td>
+                            {{ newsletter_open.subscriber.email }}
+                        </td>
+                        <td>
+                            {{ newsletter_open.track_id }}
+                        </td>
+                        <td>
+                            {{ newsletter_open.newsletter.send_time }}
+                        </td>
+                        <td>
+                            {{ newsletter_open.opened }}
+                        </td>
+                        <td>
+                            {% if newsletter_open.opened %}
+                                {{ newsletter_open.opened_at }}
+                            {%  else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

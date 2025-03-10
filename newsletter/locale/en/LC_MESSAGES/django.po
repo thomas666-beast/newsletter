@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-10 08:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: newsletter/models.py:10
+msgid "email_already_exists"
+msgstr "Email already exists"
+
+#: newsletter/models.py:11 newsletter/models.py:19 newsletter/models.py:25
+#: newsletter/models.py:28 newsletter/models.py:36 newsletter/models.py:37
+msgid "required"
+msgstr "This field is required"
+
+#: newsletter/models.py:12
+msgid "invalid_email"
+msgstr "Invalid Email"
+
+#: newsletter/models.py:38
+msgid "invalid_date_time"
+msgstr "Invalid date/time"
+
+#: newsletter/templates/layouts/app.html:22
+#: newsletter/templates/pages/subscribers/index.html:4
+msgid "subscribers"
+msgstr "Subscribers"
+
+#: newsletter/templates/layouts/app.html:25
+#: newsletter/templates/pages/newsletter/index.html:4
+msgid "newsletters"
+msgstr "Newsletters"
+
+#: newsletter/templates/pages/newsletter/index.html:11
+msgid "add_newsletter"
+msgstr "Add newsletter"
+
+#: newsletter/templates/pages/newsletter/index.html:23
+msgid "subject"
+msgstr "Subject"
+
+#: newsletter/templates/pages/newsletter/index.html:24
+msgid "content"
+msgstr "Content"
+
+#: newsletter/templates/pages/newsletter/index.html:25
+#: newsletter/templates/pages/newsletter/trackers/index.html:15
+msgid "send_time"
+msgstr "Sent time"
+
+#: newsletter/templates/pages/newsletter/index.html:26
+msgid "created_on"
+msgstr "Created on"
+
+#: newsletter/templates/pages/newsletter/index.html:27
+#: newsletter/templates/pages/subscribers/index.html:27
+msgid "action"
+msgstr "Action"
+
+#: newsletter/templates/pages/newsletter/index.html:49
+msgid "view_trackers"
+msgstr "View trackers"
+
+#: newsletter/templates/pages/newsletter/index.html:63
+msgid "send_newsletter"
+msgstr "Send newsletter"
+
+#: newsletter/templates/pages/newsletter/index.html:78
+msgid "you_can_include"
+msgstr "You can include"
+
+#: newsletter/templates/pages/newsletter/index.html:78
+msgid "or"
+msgstr "or"
+
+#: newsletter/templates/pages/newsletter/index.html:87
+#: newsletter/templates/pages/subscribers/create.html:47
+#: newsletter/templates/pages/subscribers/index.html:91
+msgid "submit"
+msgstr "Submit"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:4
+msgid "check_trackers"
+msgstr "Check trackers"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:13
+#: newsletter/templates/pages/subscribers/index.html:25
+msgid "email"
+msgstr "Email"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:14
+msgid "track_id"
+msgstr "TrackID"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:16
+msgid "opened"
+msgstr "Opened"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:17
+msgid "opened_at"
+msgstr "Open at"
+
+#: newsletter/templates/pages/subscribers/create.html:4
+#: newsletter/templates/pages/subscribers/create.html:8
+#: newsletter/templates/pages/subscribers/index.html:11
+#: newsletter/templates/pages/subscribers/index.html:65
+msgid "add_subscriber"
+msgstr "Add subscriber"
+
+#: newsletter/templates/pages/subscribers/index.html:23
+msgid "firstname"
+msgstr "Firstname"
+
+#: newsletter/templates/pages/subscribers/index.html:24
+msgid "lastname"
+msgstr "Lastname"
+
+#: newsletter/templates/pages/subscribers/index.html:26
+msgid "birthday"
+msgstr "Birthday"
+
+#: newsletter/templates/pages/subscribers/index.html:51
+msgid "delete"
+msgstr "Delete"
+
+#: newsletter/views/api/newsletter_view_api.py:33
+msgid "newsletter_registered"
+msgstr "Newsletter has been registered"
+
+#: newsletter/views/api/newsletter_view_api.py:43
+msgid "newsletter_id_not_found"
+msgstr "Newsletter ID:{} not found!"
+
+#: newsletter/views/api/subscriber_view_api.py:16
+msgid "subscriber_added!"
+msgstr "Subscriber has been added"
+
+#: newsletter_service/settings.py:124
+msgid "English"
+msgstr "English"
+
+#: newsletter_service/settings.py:125
+msgid "Russian"
+msgstr "Russian"

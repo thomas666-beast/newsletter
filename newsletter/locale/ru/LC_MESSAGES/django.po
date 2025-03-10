@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-10 08:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: newsletter/models.py:10
+msgid "email_already_exists"
+msgstr "Email уже существует"
+
+#: newsletter/models.py:11 newsletter/models.py:19 newsletter/models.py:25
+#: newsletter/models.py:28 newsletter/models.py:36 newsletter/models.py:37
+msgid "required"
+msgstr "Это поле обязательно для заполнения"
+
+#: newsletter/models.py:12
+msgid "invalid_email"
+msgstr "Неверный Email"
+
+#: newsletter/models.py:38
+msgid "invalid_date_time"
+msgstr "Неверная дата/время"
+
+#: newsletter/templates/layouts/app.html:22
+#: newsletter/templates/pages/subscribers/index.html:4
+msgid "subscribers"
+msgstr "Подписчики"
+
+#: newsletter/templates/layouts/app.html:25
+#: newsletter/templates/pages/newsletter/index.html:4
+msgid "newsletters"
+msgstr "Рассылки"
+
+#: newsletter/templates/pages/newsletter/index.html:11
+msgid "add_newsletter"
+msgstr "Добавить рассылку"
+
+#: newsletter/templates/pages/newsletter/index.html:23
+msgid "subject"
+msgstr "Тема"
+
+#: newsletter/templates/pages/newsletter/index.html:24
+msgid "content"
+msgstr "Содержание"
+
+#: newsletter/templates/pages/newsletter/index.html:25
+#: newsletter/templates/pages/newsletter/trackers/index.html:15
+msgid "send_time"
+msgstr "Время отправки"
+
+#: newsletter/templates/pages/newsletter/index.html:26
+msgid "created_on"
+msgstr "Создано"
+
+#: newsletter/templates/pages/newsletter/index.html:27
+#: newsletter/templates/pages/subscribers/index.html:27
+msgid "action"
+msgstr "Действие"
+
+#: newsletter/templates/pages/newsletter/index.html:49
+msgid "view_trackers"
+msgstr "Просмотреть трекеры"
+
+#: newsletter/templates/pages/newsletter/index.html:63
+msgid "send_newsletter"
+msgstr "Отправить рассылку"
+
+#: newsletter/templates/pages/newsletter/index.html:78
+msgid "you_can_include"
+msgstr "Вы можете включить"
+
+#: newsletter/templates/pages/newsletter/index.html:78
+msgid "or"
+msgstr "или"
+
+#: newsletter/templates/pages/newsletter/index.html:87
+#: newsletter/templates/pages/subscribers/create.html:47
+#: newsletter/templates/pages/subscribers/index.html:91
+msgid "submit"
+msgstr "Отправить"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:4
+msgid "check_trackers"
+msgstr "Проверить трекеры"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:13
+#: newsletter/templates/pages/subscribers/index.html:25
+msgid "email"
+msgstr "Email"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:14
+msgid "track_id"
+msgstr "TrackID"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:16
+msgid "opened"
+msgstr "Открыто"
+
+#: newsletter/templates/pages/newsletter/trackers/index.html:17
+msgid "opened_at"
+msgstr "Открыто в"
+
+#: newsletter/templates/pages/subscribers/create.html:4
+#: newsletter/templates/pages/subscribers/create.html:8
+#: newsletter/templates/pages/subscribers/index.html:11
+#: newsletter/templates/pages/subscribers/index.html:65
+msgid "add_subscriber"
+msgstr "Добавить подписчика"
+
+#: newsletter/templates/pages/subscribers/index.html:23
+msgid "firstname"
+msgstr "Имя"
+
+#: newsletter/templates/pages/subscribers/index.html:24
+msgid "lastname"
+msgstr "Фамилия"
+
+#: newsletter/templates/pages/subscribers/index.html:26
+msgid "birthday"
+msgstr "День рождения"
+
+#: newsletter/templates/pages/subscribers/index.html:51
+msgid "delete"
+msgstr "Удалить"
+
+#: newsletter/views/api/newsletter_view_api.py:33
+msgid "newsletter_registered"
+msgstr "Рассылка зарегистрирована"

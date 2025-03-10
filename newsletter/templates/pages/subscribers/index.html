@@ -1,0 +1,148 @@
+{% extends 'layouts/app.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'subscribers' %}{% endblock %}
+
+{% block content %}
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    {% trans 'add_subscriber' %}
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% trans 'firstname' %}</th>
+                        <th scope="col">{% trans 'lastname' %}</th>
+                        <th scope="col">{% trans 'email' %}</th>
+                        <th scope="col">{% trans 'birthday' %}</th>
+                        <th scope="col">{% trans 'action' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for subscriber in subscribers %}
+                    <tr>
+                        <th scope="row">
+                            {{ subscriber.id }}
+                        </th>
+                        <td>
+                            {{ subscriber.firstname }}
+                        </td>
+                        <td>
+                            {{ subscriber.lastname }}
+                        </td>
+                        <td>
+                            {{ subscriber.email }}
+                        </td>
+                        <td>
+                            {{ subscriber.birthday }}
+                        </td>
+                        <td>
+                            <form action="{% url 'subscribers.delete' subscriber_id=subscriber.id %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-danger" type="submit">{% trans 'delete' %}</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">{% trans 'add_subscriber' %}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="subscriber-form" method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">{% trans 'email' %}</label>
+                    {{ form.email }}
+                    <div class="text-danger" id="email-error"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.firstname.id_for_label }}" class="form-label">{% trans 'firstname' %}</label>
+                    {{ form.firstname }}
+                    <div class="text-danger" id="firstname-error"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.lastname.id_for_label }}" class="form-label">{% trans 'lastname' %}</label>
+                    {{ form.lastname }}
+                    <div class="text-danger" id="lastname-error"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.birthday.id_for_label }}" class="form-label">{% trans 'birthday' %}</label>
+                    {{ form.birthday }}
+                    <div class="text-danger" id="birthday-error"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>
+            </form>
+            <div id="success-message" class="text-success mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function() {
+            $('#staticBackdrop').on('hidden.bs.modal', function () {
+                location.reload();
+            });
+
+            $('#subscriber-form').on('submit', function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "api.subscribers.store" %}',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                            $('#email-error').text('');
+                            $('#firstname-error').text('');
+                            $('#lastname-error').text('');
+                            $('#birthday-error').text('');
+                            $('#success-message').text('');
+
+                        if (response.success) {
+                            $('#success-message').text(response.message);
+                            $('#subscriber-form')[0].reset();
+                        } else {
+                            // Display new error messages
+                            if (response.errors.email) {
+                                $('#email-error').text(response.errors.email.join(', '));
+                            }
+                            if (response.errors.firstname) {
+                                $('#firstname-error').text(response.errors.firstname.join(', '));
+                            }
+                            if (response.errors.lastname) {
+                                $('#lastname-error').text(response.errors.lastname.join(', '));
+                            }
+                            if (response.errors.birthday) {
+                                $('#birthday-error').text(response.errors.birthday.join(', '));
+                            }
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

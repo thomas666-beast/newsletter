@@ -1,0 +1,138 @@
+{% extends 'layouts/app.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'newsletters' %}{% endblock %}
+
+{% block content %}
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    {% trans 'add_newsletter' %}
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% trans 'subject' %}</th>
+                        <th scope="col">{% trans 'content' %}</th>
+                        <th scope="col">{% trans 'send_time' %}</th>
+                        <th scope="col">{% trans 'created_on' %}</th>
+                        <th scope="col">{% trans 'action' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for newsletter in newsletters %}
+                    <tr>
+                        <th scope="row">
+                            {{ newsletter.id }}
+                        </th>
+                        <td>
+                            {{ newsletter.subject }}
+                        </td>
+                        <td>
+                            {{ newsletter.html_content | truncatechars:17 }}
+                        </td>
+                        <td>
+                            {{ newsletter.send_time }}
+                        </td>
+                        <td>
+                            {{ newsletter.created_on }}
+                        </td>
+                        <td>
+                            <a href="{% url 'newsletters.trackers.index' newsletter_id=newsletter.id %}">{% trans 'view_trackers' %}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{% trans 'send_newsletter' %}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newsletter-form" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.subject.id_for_label }}" class="form-label"> {% trans 'subject' %}</label>
+                            {{ form.subject }}
+                            <div class="text-danger" id="subject-error"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.html_content.id_for_label }}" class="form-label">{{ form.html_content.label }}</label>
+                            {{ form.html_content }}
+                            <div class="text-muted small">
+                                {% trans 'you_can_include' %} {firstname} {% trans 'or' %} {lastname} {% trans 'or' %} {birthday}
+                            </div>
+                            <div class="text-danger" id="html_content-error"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.send_time.id_for_label }}" class="form-label">{% trans 'send_time' %}</label>
+                            {{ form.send_time }}
+                            <div class="text-danger" id="send_time-error"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>
+                    </form>
+                    <div id="success-message" class="text-success mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function() {
+            $('#staticBackdrop').on('hidden.bs.modal', function () {
+                location.reload();
+            });
+
+            $('#newsletter-form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "api.newsletter.store" %}',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#subject-error').text('');
+                        $('#html_content-error').text('');
+                        $('#send_time-error').text('');
+                        $('#success-message').text('');
+
+                        if (response.success) {
+                            $('#success-message').text(response.message);
+                            $('#newsletter-form')[0].reset();
+                        } else {
+                            if (response.errors.subject) {
+                                $('#subject-error').text(response.errors.subject.join(', '));
+                            }
+                            if (response.errors.html_content) {
+                                $('#html_content-error').text(response.errors.html_content.join(', '));
+                            }
+                            if (response.errors.send_time) {
+                                $('#send_time-error').text(response.errors.send_time.join(', '));
+                            }
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

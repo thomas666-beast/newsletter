@@ -1,0 +1,55 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+*.egg
+dist/
+build/
+*.log
+
+# Django
+*.sqlite3
+db.sqlite3
+#media/
+staticfiles/
+static/
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.swp
+*.swo
+
+# Other
+*.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd

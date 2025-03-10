@@ -25,6 +25,7 @@ DEFAULT_FROM_EMAIL = 'email'
 ```
 python manage.py makemigrations
 python manage.py migrate
+python manage.py test # Если вам угодно.
 python manage.py runserver
 ```
 * Откройте другую вкладку и выполните
@@ -61,6 +62,7 @@ DEFAULT_FROM_EMAIL = 'email'
 ```
 python manage.py makemigrations
 python manage.py migrate
+python manage.py test # If you want
 python manage.py runserver
 ```
 * Open other tab and you run
